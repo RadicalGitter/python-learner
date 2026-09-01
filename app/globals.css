@@ -302,37 +302,33 @@ button { font: inherit; }
 .micro-progress span { color: #65736a; font-family: var(--font-geist-mono), monospace; font-size: 9px; }
 .micro-progress i { background: linear-gradient(90deg, var(--green) 14%, #dfe5de 14%); border-radius: 20px; height: 5px; width: 120px; }
 .leave-link { color: #647168; font-size: 10px; font-weight: 650; justify-self: end; text-decoration: none; }
-.lesson-task-switcher { background: rgba(247,245,239,.96); border-bottom: 1px solid var(--line); position: sticky; top: 76px; z-index: 9; }
-.lesson-task-switcher > div { align-items: center; display: grid; gap: 18px; grid-template-columns: auto minmax(380px, 620px) 1fr; margin: 0 auto; max-width: 1280px; min-height: 64px; padding: 8px 30px; }
-.task-switcher-label { color: #718078; font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.lesson-task-switcher ol { align-items: center; display: flex; list-style: none; margin: 0; padding: 0; }
-.lesson-task-switcher li { align-items: center; display: flex; flex: 1; min-width: 0; }
-.lesson-task-switcher li:not(:last-child)::after { background: #cfd7cf; content: ''; flex: 1; height: 1px; margin: 0 8px; min-width: 12px; }
-.lesson-task-switcher li.complete:not(:last-child)::after { background: #9db28a; }
-.lesson-task-switcher button { align-items: center; background: transparent; border: 0; color: #6c7971; cursor: pointer; display: flex; gap: 7px; min-width: 0; padding: 5px 0; text-align: left; }
-.lesson-task-switcher button > span { align-items: center; border: 1px solid #c9d2ca; border-radius: 50%; display: flex; flex: 0 0 auto; font-family: var(--font-geist-mono), monospace; font-size: 8px; height: 24px; justify-content: center; width: 24px; }
-.lesson-task-switcher button > small { font-size: 8px; line-height: 1.25; }
-.lesson-task-switcher li.complete button > span { background: var(--lime); border-color: var(--lime); color: var(--ink); }
-.lesson-task-switcher li.active button { color: var(--ink); font-weight: 750; }
-.lesson-task-switcher li.active button > span { background: var(--green); border-color: var(--green); box-shadow: 0 0 0 3px #dfe8dc; color: white; }
-.lesson-task-switcher > div > p { color: #7c887f; font-size: 8px; justify-self: end; line-height: 1.4; margin: 0; max-width: 190px; text-align: right; }
 .first-lesson-grid { display: grid; gap: clamp(34px, 4.5vw, 68px); grid-template-columns: minmax(390px, .95fr) minmax(440px, 1.05fr); margin: 0 auto; max-width: 1280px; padding: 42px 30px 80px; }
 .micro-label { color: var(--green); font-size: 9px; font-weight: 800; letter-spacing: .1em; margin: 0 0 12px; text-transform: uppercase; }
 .lesson-conductor { border-right: 1px solid var(--line); min-width: 0; padding-right: clamp(28px, 4vw, 58px); }
 .lesson-conductor-intro h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(40px, 4vw, 55px); font-weight: 500; letter-spacing: -.05em; line-height: 1.02; margin: 0; }
 .lesson-conductor-intro h1 code { color: var(--green); font-family: var(--font-geist-mono), monospace; font-size: .76em; font-weight: 600; letter-spacing: -.06em; }
 .lesson-intro { color: #58655c; font-size: 13px; line-height: 1.65; margin: 18px 0 24px; }
-.horizontal-task-deck { align-items: stretch; display: flex; gap: 9px; min-height: 455px; overflow-x: auto; padding: 5px 5px 18px; scrollbar-color: #c4cec5 transparent; }
-.abstract-task { background: #edf1eb; border: 1px solid #d9e0d9; border-radius: 11px; color: #5e6d63; cursor: pointer; display: flex; flex: 0 0 88px; flex-direction: column; min-height: 100%; padding: 14px 11px; text-align: left; transition: background .18s ease, transform .18s ease; }
-.abstract-task:hover { background: #e5ebe3; transform: translateY(-2px); }
-.abstract-task.distance-2 { flex-basis: 66px; padding-inline: 9px; }
-.abstract-task > span { align-items: center; border: 1px solid #bac7bc; border-radius: 50%; display: flex; font-family: var(--font-geist-mono), monospace; font-size: 8px; height: 22px; justify-content: center; margin-bottom: 13px; width: 22px; }
-.abstract-task.complete > span { background: var(--lime); border-color: var(--lime); color: var(--ink); }
-.abstract-task > strong { color: var(--ink); font-size: 9px; line-height: 1.25; }
-.abstract-task > small { color: #829087; font-size: 7px; margin-top: auto; padding-top: 18px; text-transform: uppercase; }
-.abstract-task.skipped { background: transparent; border-style: dashed; }
-.abstract-task.distance-2 > small { display: none; }
-.active-task-card { background: white; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 14px 36px rgba(31,49,36,.08); flex: 1 0 285px; min-width: 285px; padding: 20px; }
+.dipping-task-nav { height: 112px; margin-top: 30px; position: relative; }
+.dipping-task-nav ol { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; margin: 0; padding: 0; position: relative; z-index: 2; }
+.dipping-task-nav li { display: flex; justify-content: center; min-width: 0; }
+.dipping-task-nav button { align-items: center; background: #f7f5ef; border: 0; color: #718078; cursor: pointer; display: flex; flex-direction: column; gap: 4px; max-width: 132px; padding: 0 5px; text-align: center; transform: translateY(0); transition: transform .28s ease, color .18s ease; width: 100%; }
+.dipping-task-nav button > span { align-items: center; background: #f7f5ef; border: 1px solid #bdc9bf; border-radius: 50%; display: flex; font-family: var(--font-geist-mono), monospace; font-size: 8px; font-weight: 750; height: 28px; justify-content: center; width: 28px; }
+.dipping-task-nav button > strong { color: var(--ink); font-size: 9px; line-height: 1.2; }
+.dipping-task-nav button > small { color: #839087; font-size: 7px; letter-spacing: .06em; text-transform: uppercase; }
+.dipping-task-nav li.complete button > span { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+.dipping-task-nav li.active button { color: var(--ink); transform: translateY(50px); }
+.dipping-task-nav li.active button > span { background: var(--green); border-color: var(--green); box-shadow: 0 0 0 4px #dfe8dc; color: white; }
+.dipping-task-nav li.active button > strong { color: var(--green); }
+.dip-connectors { display: grid; grid-template-columns: 1fr 1fr; height: 50px; left: 16.666%; position: absolute; right: 16.666%; top: 14px; z-index: 0; }
+.dip-connectors i { display: block; }
+.dipping-task-nav.active-step-1 .dip-connectors i:first-child,
+.dipping-task-nav.active-step-2 .dip-connectors i:last-child { background: linear-gradient(to bottom right, transparent calc(50% - 1px), #b5c3b7 calc(50% - 1px), #b5c3b7 calc(50% + 1px), transparent calc(50% + 1px)); }
+.dipping-task-nav.active-step-2 .dip-connectors i:first-child,
+.dipping-task-nav.active-step-3 .dip-connectors i:last-child { background: linear-gradient(to top right, transparent calc(50% - 1px), #b5c3b7 calc(50% - 1px), #b5c3b7 calc(50% + 1px), transparent calc(50% + 1px)); }
+.dipping-task-nav.active-step-1 .dip-connectors i:last-child,
+.dipping-task-nav.active-step-3 .dip-connectors i:first-child { background: linear-gradient(#b5c3b7, #b5c3b7) left top / 100% 2px no-repeat; }
+.task-nav-help { color: #7c887f; font-size: 8px; line-height: 1.45; margin: 0 0 10px; text-align: center; }
+.active-task-card { background: white; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 14px 36px rgba(31,49,36,.08); min-height: 400px; padding: 20px; }
 .skip-note { background: #fff7de; border: 1px solid #eddfae; border-radius: 8px; color: #766a43; font-size: 8px; line-height: 1.5; margin: 0 0 17px; padding: 9px 10px; }
 .task-heading { align-items: center; display: flex; justify-content: space-between; }
 .task-heading > span { color: var(--green); font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
@@ -368,7 +364,7 @@ button { font: inherit; }
 .lesson-finished p { margin: 5px 0 0; }
 .reset-lesson { background: transparent; border: 0; color: #77837b; cursor: pointer; font-size: 9px; margin: 2px 0 0 5px; padding: 4px 0; text-decoration: underline; text-decoration-color: #c8d0c8; text-underline-offset: 3px; }
 
-.practice-surface { align-self: start; background: var(--code); border: 1px solid #26372d; border-radius: 16px; box-shadow: 0 24px 65px rgba(28,45,34,.15); color: white; overflow: hidden; position: sticky; top: 158px; }
+.practice-surface { align-self: start; background: var(--code); border: 1px solid #26372d; border-radius: 16px; box-shadow: 0 24px 65px rgba(28,45,34,.15); color: white; overflow: hidden; position: sticky; top: 105px; }
 .practice-title { align-items: center; border-bottom: 1px solid #293930; color: #9aa89f; display: flex; font-size: 9px; height: 43px; justify-content: space-between; padding: 0 16px; }
 .practice-title > div { align-items: center; display: flex; gap: 7px; }
 .practice-title strong { color: #eef4ef; font-family: var(--font-geist-mono), monospace; font-size: 10px; }
@@ -390,8 +386,6 @@ button { font: inherit; }
 .lesson-footer a { color: inherit; text-decoration: none; }
 
 @media (max-width: 850px) {
-  .lesson-task-switcher > div { grid-template-columns: auto 1fr; }
-  .lesson-task-switcher > div > p { display: none; }
   .first-lesson-grid { grid-template-columns: 1fr; }
   .lesson-conductor { border-right: 0; padding-right: 0; }
   .practice-surface { position: static; }
@@ -400,14 +394,9 @@ button { font: inherit; }
   .micro-lesson-header { padding: 0 16px; }
   .micro-lesson-header .welcome-brand small { display: none; }
   .micro-progress i { width: 75px; }
-  .lesson-task-switcher > div { gap: 9px; min-height: 58px; padding: 7px 16px; }
-  .task-switcher-label { display: none; }
-  .lesson-task-switcher > div { grid-template-columns: 1fr; }
-  .lesson-task-switcher li:not(:last-child)::after { margin: 0 5px; }
-  .lesson-task-switcher button > small { display: none; }
   .first-lesson-grid { padding: 34px 18px 60px; }
   .lesson-conductor-intro h1 { font-size: 40px; }
-  .horizontal-task-deck { margin-right: -18px; padding-right: 18px; }
+  .dipping-task-nav button > strong { font-size: 8px; }
   .active-task-card { padding: 17px; }
   .output-flow { align-items: stretch; flex-direction: column; text-align: center; }
   .output-flow i { transform: rotate(90deg); }

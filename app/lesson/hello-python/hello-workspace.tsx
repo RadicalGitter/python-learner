@@ -176,52 +176,36 @@ export default function HelloWorkspace() {
     : activeStep === 3 && !lessonComplete;
 
   return (
-    <>
-      <nav className="lesson-task-switcher" aria-label="Tasks in this lesson">
-        <div>
-          <span className="task-switcher-label">Tasks</span>
-          <ol>
-            {tasks.map((task) => (
-              <li className={`${activeStep === task.step ? 'active' : ''} ${isComplete(task.step) ? 'complete' : ''}`} key={task.step}>
-                <button
-                  aria-current={activeStep === task.step ? 'step' : undefined}
-                  aria-label={`${activeStep < task.step ? 'Skip to' : 'Open'} task ${task.step}: ${task.label}`}
-                  onClick={() => showStep(task.step)}
-                  type="button"
-                >
-                  <span>{isComplete(task.step) ? '✓' : task.step}</span>
-                  <small>{task.label}</small>
-                </button>
-              </li>
-            ))}
-          </ol>
-          <p>Correct output advances automatically. This line can jump anywhere.</p>
-        </div>
-      </nav>
-
       <div className="first-lesson-grid">
         <article className="lesson-conductor">
           <div className="lesson-conductor-intro">
             <p className="micro-label">Lesson 1 of 7 · About 5 minutes</p>
             <h1>Meet <code>print()</code></h1>
-            <p className="lesson-intro">The task in focus stays fully explained. Earlier tasks remain beside it as smaller reminders you can reopen at any time.</p>
+            <p className="lesson-intro">The task line dips toward the task you are working on. Correct output moves the dip forward; any numbered task can also be opened directly.</p>
           </div>
 
-          <div className={`horizontal-task-deck showing-step-${activeStep}`}>
-            {tasks.filter((task) => task.step < activeStep).map((task) => (
-              <button
-                className={`abstract-task distance-${activeStep - task.step} ${isComplete(task.step) ? 'complete' : 'skipped'}`}
-                key={task.step}
-                onClick={() => showStep(task.step)}
-                type="button"
-              >
-                <span>{isComplete(task.step) ? '✓' : task.step}</span>
-                <strong>{task.short}</strong>
-                <small>{isComplete(task.step) ? 'Done' : 'Skipped'}</small>
-              </button>
-            ))}
+          <nav className={`dipping-task-nav active-step-${activeStep}`} aria-label="Tasks in this lesson">
+            <div className="dip-connectors" aria-hidden="true"><i /><i /></div>
+            <ol>
+              {tasks.map((task) => (
+                <li className={`${activeStep === task.step ? 'active' : ''} ${isComplete(task.step) ? 'complete' : ''}`} key={task.step}>
+                  <button
+                    aria-current={activeStep === task.step ? 'step' : undefined}
+                    aria-label={`${activeStep < task.step ? 'Skip to' : 'Open'} task ${task.step}: ${task.label}`}
+                    onClick={() => showStep(task.step)}
+                    type="button"
+                  >
+                    <span>{isComplete(task.step) ? '✓' : task.step}</span>
+                    <strong>{task.short}</strong>
+                    <small>{activeStep === task.step ? 'Current' : isComplete(task.step) ? 'Done' : 'Jump'}</small>
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <p className="task-nav-help">Work advances automatically. The three tasks above also act as direct navigation.</p>
 
-            <section className="active-task-card" ref={stageRef}>
+          <section className="active-task-card" ref={stageRef}>
               {skippedAhead && <p className="skip-note"><strong>Previewing ahead.</strong> You can read or try this task now; earlier tasks remain incomplete.</p>}
 
               {activeStep === 1 && (
@@ -275,8 +259,7 @@ export default function HelloWorkspace() {
                   </div>
                 </>
               )}
-            </section>
-          </div>
+          </section>
 
           <button className="reset-lesson" onClick={resetLesson} type="button">Start this lesson over</button>
         </article>
@@ -295,6 +278,5 @@ export default function HelloWorkspace() {
           </div>
         </section>
       </div>
-    </>
   );
 }

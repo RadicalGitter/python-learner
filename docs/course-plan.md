@@ -32,12 +32,14 @@ learner can stop after either with a working program.
 
 ## Lesson navigation
 
-Concept lessons use a horizontal focus deck rather than a growing vertical
-checklist:
+Concept lessons use a horizontal dipping task line rather than a growing
+vertical checklist:
 
 - the selected task is shown with its complete explanation;
-- earlier tasks remain visible as increasingly compact reminders and can be
-  reopened;
+- every task keeps an equal place on the line, while the selected task dips
+  down toward the full-width content card below;
+- earlier and later tasks remain visible at the upper level and can be opened
+  directly;
 - correct evidence advances the deck automatically, so there is no routine
   “next” button that can bypass the work;
 - a numbered line above the lesson allows an intentional jump to any task;
