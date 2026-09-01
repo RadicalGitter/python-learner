@@ -36,8 +36,9 @@ Concept lessons use a compact vertical task deck:
 
 - the selected task is shown with its complete explanation;
 - inactive tasks collapse to numbered circles on a vertical line;
-- the selected circle opens sideways into the full content card, then folds
-  back when another task is selected;
+- the line occupies its own narrow column to the left of the presentation;
+- the selected circle opens sideways into the full content card, while the
+  card and its text remain anchored when another task is selected;
 - earlier and later circles remain visible and can be opened directly;
 - correct evidence advances the deck automatically, so there is no routine
   “next” button that can bypass the work;

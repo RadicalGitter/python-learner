@@ -176,107 +176,105 @@ export default function HelloWorkspace() {
     : activeStep === 3 && !lessonComplete;
 
   return (
-      <div className="first-lesson-grid">
-        <article className="lesson-conductor">
-          <div className="lesson-conductor-intro">
-            <p className="micro-label">Lesson 1 of 7 · About 5 minutes</p>
-            <h1>Meet <code>print()</code></h1>
-            <p className="lesson-intro">Each task begins as a circle in the lesson deck. The task you are working on opens into a full card; correct output draws the next card.</p>
-          </div>
+    <div className="first-lesson-grid">
+      <nav className="page-task-deck" aria-label="Tasks in this lesson">
+        <ol>
+          {tasks.map((task) => (
+            <li className={`${activeStep === task.step ? 'active' : ''} ${isComplete(task.step) ? 'complete' : ''}`} key={task.step}>
+              <button
+                className="task-node"
+                aria-current={activeStep === task.step ? 'step' : undefined}
+                aria-label={`${activeStep < task.step ? 'Skip to' : 'Open'} task ${task.step}: ${task.label}`}
+                onClick={() => showStep(task.step)}
+                title={`${task.step}. ${task.short}`}
+                type="button"
+              >
+                {isComplete(task.step) ? '✓' : task.step}
+              </button>
+            </li>
+          ))}
+        </ol>
+      </nav>
 
-          <nav className="vertical-task-deck" aria-label="Tasks in this lesson">
-            <ol>
-              {tasks.map((task) => (
-                <li className={`${activeStep === task.step ? 'active' : ''} ${isComplete(task.step) ? 'complete' : ''}`} key={task.step}>
-                  <button
-                    className="task-node"
-                    aria-current={activeStep === task.step ? 'step' : undefined}
-                    aria-label={`${activeStep < task.step ? 'Skip to' : 'Open'} task ${task.step}: ${task.label}`}
-                    onClick={() => showStep(task.step)}
-                    title={`${task.step}. ${task.short}`}
-                    type="button"
-                  >
-                    {isComplete(task.step) ? '✓' : task.step}
-                  </button>
+      <article className="lesson-conductor">
+        <div className="lesson-conductor-intro">
+          <p className="micro-label">Lesson 1 of 7 · About 5 minutes</p>
+          <h1>Meet <code>print()</code></h1>
+          <p className="lesson-intro">The task marker moves down the deck while this presentation stays anchored. Correct output advances it automatically.</p>
+        </div>
 
-                  {activeStep === task.step && (
-                    <section className="active-task-card" ref={stageRef}>
-                      {skippedAhead && <p className="skip-note"><strong>Previewing ahead.</strong> You can read or try this task now; earlier tasks remain incomplete.</p>}
+        <section className="active-task-card" key={activeStep} ref={stageRef}>
+          {skippedAhead && <p className="skip-note"><strong>Previewing ahead.</strong> You can read or try this task now; earlier tasks remain incomplete.</p>}
 
-                      {activeStep === 1 && (
-                        <>
-                          <div className="task-heading"><span>Task 1 · Try the idea</span>{isComplete(1) && <b>Revisiting</b>}</div>
-                          <h2>Make Python say hello</h2>
-                          <div className="task-body">
-                            <h3>What do we want to do?</h3>
-                            <p>Ask a program to display the words <strong>Hello, Python!</strong></p>
-                            <h3>How can we do it?</h3>
-                            <p>Python has an instruction named <code>print()</code>. The words inside its parentheses are what we want it to show.</p>
-                            <pre><code>print(&quot;Hello, Python!&quot;)</code></pre>
-                            <p className="task-action">This example is already in the editor. Run it without changing anything.</p>
-                            <div className="task-target"><span>Target output</span><code>{firstTarget}</code></div>
-                          </div>
-                        </>
-                      )}
+          {activeStep === 1 && (
+            <>
+              <div className="task-heading"><span>Task 1 · Try the idea</span>{isComplete(1) && <b>Revisiting</b>}</div>
+              <h2>Make Python say hello</h2>
+              <div className="task-body">
+                <h3>What do we want to do?</h3>
+                <p>Ask a program to display the words <strong>Hello, Python!</strong></p>
+                <h3>How can we do it?</h3>
+                <p>Python has an instruction named <code>print()</code>. The words inside its parentheses are what we want it to show.</p>
+                <pre><code>print(&quot;Hello, Python!&quot;)</code></pre>
+                <p className="task-action">This example is already in the editor. Run it without changing anything.</p>
+                <div className="task-target"><span>Target output</span><code>{firstTarget}</code></div>
+              </div>
+            </>
+          )}
 
-                      {activeStep === 2 && (
-                        <>
-                          <div className="task-heading"><span>Task 2 · Change it</span>{isComplete(2) && <b>Revisiting</b>}</div>
-                          <h2>Make the output say something new</h2>
-                          <div className="task-body">
-                            <p>Keep the <code>print(</code> and <code>)</code>. Replace only the words between the quotation marks, then run the code again.</p>
-                            <div className="task-target"><span>New target output</span><code>{secondTarget}</code></div>
-                            <details className="nudge-box">
-                              <summary>Need a nudge?</summary>
-                              <p>Your line should begin with <code>print(&quot;</code> and end with <code>&quot;)</code>.</p>
-                            </details>
-                          </div>
-                        </>
-                      )}
+          {activeStep === 2 && (
+            <>
+              <div className="task-heading"><span>Task 2 · Change it</span>{isComplete(2) && <b>Revisiting</b>}</div>
+              <h2>Make the output say something new</h2>
+              <div className="task-body">
+                <p>Keep the <code>print(</code> and <code>)</code>. Replace only the words between the quotation marks, then run the code again.</p>
+                <div className="task-target"><span>New target output</span><code>{secondTarget}</code></div>
+                <details className="nudge-box">
+                  <summary>Need a nudge?</summary>
+                  <p>Your line should begin with <code>print(&quot;</code> and end with <code>&quot;)</code>.</p>
+                </details>
+              </div>
+            </>
+          )}
 
-                      {activeStep === 3 && (
-                        <>
-                          <div className="task-heading"><span>Task 3 · Understand it</span><b>{lessonComplete ? 'Lesson complete' : 'Explanation'}</b></div>
-                          <h2>What did <code>print()</code> actually do?</h2>
-                          <div className="task-body output-explainer">
-                            <p><strong>Output</strong> is information a program sends outward. By default, <code>print()</code> sends text to a standard channel called <strong>standard output</strong>, or <code>stdout</code>.</p>
-                            <div className="output-flow" aria-label="Python sends text through standard output to this lesson’s Output panel">
-                              <span>Python</span><i>→</i><span>standard output</span><i>→</i><span>Output panel</span>
-                            </div>
-                            <dl>
-                              <div><dt>Is it a text document?</dt><dd>No. Think of it as a stream of text passing out of the running program. This panel keeps it visible, but Python did not save a document.</dd></div>
-                              <div><dt>Can <code>print()</code> put text anywhere?</dt><dd>Not by itself. It writes to standard output unless we deliberately give it another text destination, such as an open file. Putting text in a webpage or app interface uses other tools you’ll meet later.</dd></div>
-                            </dl>
-                            <div className={lessonComplete ? 'lesson-finished' : 'lesson-finished incomplete'}>
-                              <span>{lessonComplete ? 'Lesson 1 complete' : 'Explanation preview'}</span>
-                              <p>{lessonComplete ? 'You used the edit → run → observe loop that we’ll build on throughout the course.' : 'Use the numbered task circles to return when you are ready to complete the practical steps.'}</p>
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </section>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </nav>
-
-          <button className="reset-lesson" onClick={resetLesson} type="button">Start this lesson over</button>
-        </article>
-
-        <section className="practice-surface" aria-label="Python editor and output">
-          <div className="practice-title"><div><span className="status-light" /> <strong>main.py</strong></div><small>Saved in this browser</small></div>
-          <textarea aria-label="Python code" onChange={(event) => setCode(event.target.value)} onKeyDown={onKeyDown} spellCheck={false} value={code} />
-          <div className="run-row">
-            <span>{activeStep === 1 ? 'Task 1: run the example' : activeStep === 2 ? 'Task 2: change the greeting' : 'The workspace stays open for experiments'}</span>
-            <button disabled={status === 'running'} onClick={runCode} type="button">{status === 'running' ? 'Starting Python…' : activeStep === 2 ? 'Run changed code' : 'Run code'} <kbd>Ctrl ↵</kbd></button>
-          </div>
-          <div className={`output-panel ${status}`} aria-live="polite">
-            <div><span>Output</span>{lastCompleted && <b>✓ Task {lastCompleted} complete</b>}</div>
-            <pre>{output}</pre>
-            <p>{feedback}</p>
-          </div>
+          {activeStep === 3 && (
+            <>
+              <div className="task-heading"><span>Task 3 · Understand it</span><b>{lessonComplete ? 'Lesson complete' : 'Explanation'}</b></div>
+              <h2>What did <code>print()</code> actually do?</h2>
+              <div className="task-body output-explainer">
+                <p><strong>Output</strong> is information a program sends outward. By default, <code>print()</code> sends text to a standard channel called <strong>standard output</strong>, or <code>stdout</code>.</p>
+                <div className="output-flow" aria-label="Python sends text through standard output to this lesson’s Output panel">
+                  <span>Python</span><i>→</i><span>standard output</span><i>→</i><span>Output panel</span>
+                </div>
+                <dl>
+                  <div><dt>Is it a text document?</dt><dd>No. Think of it as a stream of text passing out of the running program. This panel keeps it visible, but Python did not save a document.</dd></div>
+                  <div><dt>Can <code>print()</code> put text anywhere?</dt><dd>Not by itself. It writes to standard output unless we deliberately give it another text destination, such as an open file. Putting text in a webpage or app interface uses other tools you’ll meet later.</dd></div>
+                </dl>
+                <div className={lessonComplete ? 'lesson-finished' : 'lesson-finished incomplete'}>
+                  <span>{lessonComplete ? 'Lesson 1 complete' : 'Explanation preview'}</span>
+                  <p>{lessonComplete ? 'You used the edit → run → observe loop that we’ll build on throughout the course.' : 'Use the numbered task circles to return when you are ready to complete the practical steps.'}</p>
+                </div>
+              </div>
+            </>
+          )}
         </section>
-      </div>
+
+        <button className="reset-lesson" onClick={resetLesson} type="button">Start this lesson over</button>
+      </article>
+
+      <section className="practice-surface" aria-label="Python editor and output">
+        <div className="practice-title"><div><span className="status-light" /> <strong>main.py</strong></div><small>Saved in this browser</small></div>
+        <textarea aria-label="Python code" onChange={(event) => setCode(event.target.value)} onKeyDown={onKeyDown} spellCheck={false} value={code} />
+        <div className="run-row">
+          <span>{activeStep === 1 ? 'Task 1: run the example' : activeStep === 2 ? 'Task 2: change the greeting' : 'The workspace stays open for experiments'}</span>
+          <button disabled={status === 'running'} onClick={runCode} type="button">{status === 'running' ? 'Starting Python…' : activeStep === 2 ? 'Run changed code' : 'Run code'} <kbd>Ctrl ↵</kbd></button>
+        </div>
+        <div className={`output-panel ${status}`} aria-live="polite">
+          <div><span>Output</span>{lastCompleted && <b>✓ Task {lastCompleted} complete</b>}</div>
+          <pre>{output}</pre>
+          <p>{feedback}</p>
+        </div>
+      </section>
+    </div>
   );
 }
