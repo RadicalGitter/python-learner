@@ -16,10 +16,10 @@ export const courseChapters: CourseChapter[] = [
     eyebrow: 'Orientation',
     title: 'Find your footing',
     promise: 'See how Python reads, make a few changes, and discover what you already know.',
-    duration: '3 short sessions · 60–90 min',
+    duration: '7 tiny lessons · 90–120 min',
     project: 'A command-log helper that finds and summarises errors',
     concepts: ['values', 'strings', 'conditions', 'loops', 'functions'],
-    sessions: ['Change a working program', 'Clean a command log', 'Make the helper your own'],
+    sessions: ['Run your first line', 'Change a message', 'Remember one value', 'Make one choice', 'Repeat an action', 'Name a reusable action', 'Project: clean a command log'],
     tone: 'seed',
   },
   {

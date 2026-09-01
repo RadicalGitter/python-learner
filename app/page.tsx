@@ -39,16 +39,16 @@ export default function Home() {
             <span>YOUR FIRST 20 MINUTES</span>
             <i>Beginner friendly</i>
           </div>
-          <h2>Make a tiny log helper</h2>
-          <p>Meet a practical problem, change a few lines, then see your code work.</p>
+          <h2>Make Python say hello</h2>
+          <p>Run one working line, change its words, then see Python respond.</p>
           <div className="session-steps">
-            <div className="complete"><b>1</b><span><strong>Understand the task</strong><small>2 minutes · one clear example</small></span><em>✓</em></div>
-            <div className="current"><b>2</b><span><strong>Try it in Python</strong><small>Write and run in your browser</small></span><em>Now</em></div>
-            <div><b>3</b><span><strong>Reflect and improve</strong><small>Compare approaches, not scores</small></span></div>
+            <div className="complete"><b>1</b><span><strong>See one instruction</strong><small>90 seconds · one clear example</small></span><em>✓</em></div>
+            <div className="current"><b>2</b><span><strong>Run and change it</strong><small>Real Python in your browser</small></span><em>Now</em></div>
+            <div><b>3</b><span><strong>Check what happened</strong><small>One expected line of output</small></span></div>
           </div>
           <div className="tiny-editor" aria-hidden="true">
             <div><span /><span /><span /><i>solution.py</i></div>
-            <pre><code><mark>def</mark> count_errors(lines):{`\n`}    total = <strong>0</strong>{`\n`}    <mark>for</mark> line <mark>in</mark> lines:</code></pre>
+            <pre><code><mark>print</mark>(&quot;Hello, <strong>Python Reboot</strong>!&quot;)</code></pre>
             <p><span>●</span> Your work is saved automatically</p>
           </div>
         </div>

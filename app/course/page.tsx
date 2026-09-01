@@ -16,7 +16,7 @@ export default function CoursePage() {
           <span className="brand-mark">py</span>
           <span><strong>Python Reboot</strong><small>A practical way back into code</small></span>
         </Link>
-        <div className="welcome-links"><Link href="/">Welcome</Link><a href="#path">The path</a><Link className="nav-cta" href="/lesson/clean-command-log">Try the first lesson</Link></div>
+        <div className="welcome-links"><Link href="/">Welcome</Link><a href="#path">The path</a><Link className="nav-cta" href="/lesson/hello-python">Try the first lesson</Link></div>
       </nav>
 
       <header className="course-intro">
@@ -29,13 +29,13 @@ export default function CoursePage() {
             <span>Recommended</span>
             <h2>I’m new or rusty</h2>
             <p>Start with tiny changes in working code. We’ll explain the editor, the vocabulary, and what each test is telling you.</p>
-            <Link href="/lesson/clean-command-log">Start with orientation <b>→</b></Link>
+            <Link href="/lesson/hello-python">Start with orientation <b>→</b></Link>
           </article>
           <article className="choice-card">
             <span>Returning programmer</span>
             <h2>I remember the basics</h2>
             <p>Take the same opening project with fewer prompts. Your results will suggest which chapter deserves your attention.</p>
-            <Link href="/lesson/clean-command-log">Warm up, then choose <b>→</b></Link>
+            <Link href="/lesson/hello-python">Warm up, then choose <b>→</b></Link>
           </article>
         </div>
       </header>
@@ -71,7 +71,7 @@ export default function CoursePage() {
       <section className="course-reassurance">
         <div><span>✦</span><h2>A tutor that helps you think—not one that takes over.</h2></div>
         <p>First you get a question. Then a concept. Then a smaller example. A full solution appears only when you explicitly ask for it.</p>
-        <Link href="/lesson/clean-command-log">Experience the first lesson <b>→</b></Link>
+        <Link href="/lesson/hello-python">Experience the first lesson <b>→</b></Link>
       </section>
     </main>
   );

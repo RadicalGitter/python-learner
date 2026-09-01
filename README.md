@@ -46,6 +46,9 @@ See [docs/course-plan.md](docs/course-plan.md) for the curriculum and learning
 model, and [docs/architecture.md](docs/architecture.md) for the reuse assessment
 and proposed delivery phases.
 
+The current lesson tempo is informed by the documented
+[Coddy reference review](docs/reference-review-coddy.md).
+
 ## License
 
 MIT

@@ -27,8 +27,8 @@ Every session follows the same predictable shape:
 5. **Read the evidence** — tests, output, and errors in plain language.
 6. **Reflect** — explain the approach and compare alternatives.
 
-Sessions target 20–40 minutes. A learner can stop after any session with a
-working program.
+Concept bites target 5–10 minutes. Project stages target 20–35 minutes. A
+learner can stop after either with a working program.
 
 ## Progression
 
