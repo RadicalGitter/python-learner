@@ -30,6 +30,24 @@ Every session follows the same predictable shape:
 Concept bites target 5–10 minutes. Project stages target 20–35 minutes. A
 learner can stop after either with a working program.
 
+## Lesson navigation
+
+Concept lessons use a horizontal focus deck rather than a growing vertical
+checklist:
+
+- the selected task is shown with its complete explanation;
+- earlier tasks remain visible as increasingly compact reminders and can be
+  reopened;
+- correct evidence advances the deck automatically, so there is no routine
+  “next” button that can bypass the work;
+- a numbered line above the lesson allows an intentional jump to any task;
+- viewing or attempting a later task does not mark skipped tasks complete;
+- the editor and output remain anchored together, separate from the changing
+  lesson instructions.
+
+This keeps normal progression strict while still giving an adult learner
+control over where they look.
+
 ## Progression
 
 | Stage | Project | Main learning outcome |
