@@ -14,6 +14,7 @@
 html, body { margin: 0; min-height: 100%; }
 body { background: var(--paper); color: var(--ink); font-family: var(--font-geist-sans), Arial, sans-serif; }
 button { font: inherit; }
+.sr-only { clip: rect(0, 0, 0, 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
 .app-shell { min-height: 100vh; }
 
 .topbar {
@@ -335,7 +336,15 @@ button { font: inherit; }
 .task-body code, .nudge-box code { background: #edf1eb; border-radius: 4px; color: var(--ink); font-family: var(--font-geist-mono), monospace; font-size: .9em; padding: 2px 4px; }
 .task-body pre { background: #f4f6f2; border-left: 3px solid var(--lime); border-radius: 4px 8px 8px 4px; color: var(--ink); font-family: var(--font-geist-mono), monospace; font-size: 11px; margin: 12px 0; overflow: auto; padding: 12px 13px; }
 .task-body pre code { background: transparent; padding: 0; }
+.syntax-anatomy { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 11px 0 16px; }
+.syntax-anatomy > div { background: #f4f6f2; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; padding: 10px; }
+.syntax-anatomy code { align-self: start; background: white; }
+.syntax-anatomy span { color: #748078; font-size: 8px; line-height: 1.4; }
 .task-action { color: var(--ink); font-weight: 650; }
+.change-boundary { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 15px 0; }
+.change-boundary > div { background: #f4f6f2; border-radius: 8px; display: flex; flex-direction: column; gap: 6px; padding: 11px; }
+.change-boundary span { color: var(--green); font-size: 7px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.change-boundary code { align-self: start; background: white; }
 .task-target { background: #edf4ed; border-radius: 9px; display: flex; flex-direction: column; gap: 4px; margin-top: 13px; padding: 11px 13px; }
 .task-target span { color: var(--green); font-size: 8px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .task-target code { background: transparent; font-family: var(--font-geist-mono), monospace; font-size: 11px; padding: 0; }
@@ -351,6 +360,21 @@ button { font: inherit; }
 .output-explainer dl > div { border-top: 1px solid var(--line); padding: 13px 0 3px; }
 .output-explainer dt { color: var(--ink); font-weight: 750; }
 .output-explainer dd { margin: 4px 0 8px; }
+.concept-check { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 15px; }
+.concept-check > h3 { margin-top: 0; }
+.concept-check > p { color: #59675e; }
+.concept-options { display: grid; gap: 7px; margin-top: 11px; }
+.concept-options button { align-items: center; background: #f7f8f5; border: 1px solid #dce3dc; border-radius: 8px; color: #536158; cursor: pointer; display: grid; font-size: 9px; gap: 9px; grid-template-columns: 22px minmax(0, 1fr); line-height: 1.45; padding: 9px 10px; text-align: left; }
+.concept-options button > span { align-items: center; border: 1px solid #cbd5cc; border-radius: 50%; display: flex; font-family: var(--font-geist-mono), monospace; font-size: 7px; height: 20px; justify-content: center; width: 20px; }
+.concept-options button code { justify-self: start; }
+.concept-options button:hover:not(:disabled) { background: #eef3eb; border-color: #b9c9bb; }
+.concept-options button.selected.wrong { background: #fff5ee; border-color: #e8c8b6; }
+.concept-options button.selected.correct { background: #edf5d0; border-color: #b9ce79; color: var(--ink); }
+.concept-options button:disabled { cursor: default; opacity: .68; }
+.concept-options button.selected:disabled { opacity: 1; }
+.concept-feedback { border-radius: 7px; font-size: 9px; line-height: 1.5; margin: 9px 0 0 !important; padding: 9px 10px; }
+.concept-feedback.correct { background: #edf5d0; color: #405331; }
+.concept-feedback.wrong { background: #fff5ee; color: #795f50; }
 .lesson-finished { background: #e7f1bc; border-radius: 9px; color: var(--ink); margin-top: 15px; padding: 13px; }
 .lesson-finished.incomplete { background: #f0f2ed; color: #647168; }
 .lesson-finished span { font-size: 8px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -368,6 +392,7 @@ button { font: inherit; }
 .run-row button { background: var(--lime); border: 0; border-radius: 8px; color: var(--ink); cursor: pointer; font-size: 10px; font-weight: 800; padding: 10px 12px; }
 .run-row button:disabled { cursor: wait; opacity: .72; }
 .run-row kbd { background: rgba(24,37,29,.12); border-radius: 4px; font-size: 8px; margin-left: 7px; padding: 3px 5px; }
+.task-node:focus-visible, .run-row button:focus-visible, .concept-options button:focus-visible, .reset-lesson:focus-visible { outline: 3px solid rgba(34,107,69,.32); outline-offset: 3px; }
 .output-panel { background: #101a14; min-height: 130px; padding: 15px 17px; }
 .output-panel > div { align-items: center; display: flex; justify-content: space-between; }
 .output-panel > div span { color: #91a097; font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
@@ -392,6 +417,7 @@ button { font: inherit; }
   .lesson-conductor { padding: 21px 18px 16px; }
   .lesson-conductor-intro h1 { font-size: 40px; }
   .active-task-card { padding-top: 17px; }
+  .syntax-anatomy, .change-boundary { grid-template-columns: 1fr; }
   .output-flow { align-items: stretch; flex-direction: column; text-align: center; }
   .output-flow i { transform: rotate(90deg); }
   .run-row > span { display: none; }

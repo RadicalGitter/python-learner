@@ -87,6 +87,7 @@ thought—not to produce finished code.
 Progress is based on evidence rather than points or streaks:
 
 - Does the program satisfy visible and hidden checks?
+- Can the learner distinguish the new concept from a plausible misconception?
 - Can the learner explain one important choice?
 - Can they make a small variation without copying?
 - Can they identify what they would improve next?
