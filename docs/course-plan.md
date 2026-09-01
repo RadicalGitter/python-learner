@@ -32,17 +32,16 @@ learner can stop after either with a working program.
 
 ## Lesson navigation
 
-Concept lessons use a horizontal dipping task line rather than a growing
-vertical checklist:
+Concept lessons use a compact vertical task deck:
 
 - the selected task is shown with its complete explanation;
-- every task keeps an equal place on the line, while the selected task dips
-  down toward the full-width content card below;
-- earlier and later tasks remain visible at the upper level and can be opened
-  directly;
+- inactive tasks collapse to numbered circles on a vertical line;
+- the selected circle opens sideways into the full content card, then folds
+  back when another task is selected;
+- earlier and later circles remain visible and can be opened directly;
 - correct evidence advances the deck automatically, so there is no routine
   “next” button that can bypass the work;
-- a numbered line above the lesson allows an intentional jump to any task;
+- the numbered circles allow an intentional jump to any task;
 - viewing or attempting a later task does not mark skipped tasks complete;
 - the editor and output remain anchored together, separate from the changing
   lesson instructions.
