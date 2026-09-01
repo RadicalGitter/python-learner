@@ -3,7 +3,7 @@ import HelloWorkspace from './hello-workspace';
 
 export const metadata = {
   title: 'Run your first line · Python Reboot',
-  description: 'A five-minute first Python lesson: run one working line, change its message, and see the result.',
+  description: 'A guided first Python lesson: run one working line, change its output, and learn what standard output means.',
   openGraph: { images: [] },
   twitter: { images: [] },
 };
