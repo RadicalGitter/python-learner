@@ -177,26 +177,27 @@ export default function HelloWorkspace() {
 
   return (
     <div className="first-lesson-grid">
-      <nav className="page-task-deck" aria-label="Tasks in this lesson">
-        <ol>
-          {tasks.map((task) => (
-            <li className={`${activeStep === task.step ? 'active' : ''} ${isComplete(task.step) ? 'complete' : ''}`} key={task.step}>
-              <button
-                className="task-node"
-                aria-current={activeStep === task.step ? 'step' : undefined}
-                aria-label={`${activeStep < task.step ? 'Skip to' : 'Open'} task ${task.step}: ${task.label}`}
-                onClick={() => showStep(task.step)}
-                title={`${task.step}. ${task.short}`}
-                type="button"
-              >
-                {isComplete(task.step) ? '✓' : task.step}
-              </button>
-            </li>
-          ))}
-        </ol>
-      </nav>
+      <div className="lesson-presentation-shell">
+        <nav className="page-task-deck" aria-label="Tasks in this lesson">
+          <ol>
+            {tasks.map((task) => (
+              <li className={`${activeStep === task.step ? 'active' : ''} ${isComplete(task.step) ? 'complete' : ''}`} key={task.step}>
+                <button
+                  className="task-node"
+                  aria-current={activeStep === task.step ? 'step' : undefined}
+                  aria-label={`${activeStep < task.step ? 'Skip to' : 'Open'} task ${task.step}: ${task.label}`}
+                  onClick={() => showStep(task.step)}
+                  title={`${task.step}. ${task.short}`}
+                  type="button"
+                >
+                  {isComplete(task.step) ? '✓' : task.step}
+                </button>
+              </li>
+            ))}
+          </ol>
+        </nav>
 
-      <article className="lesson-conductor">
+        <article className="lesson-conductor">
         <div className="lesson-conductor-intro">
           <p className="micro-label">Lesson 1 of 7 · About 5 minutes</p>
           <h1>Meet <code>print()</code></h1>
@@ -259,8 +260,9 @@ export default function HelloWorkspace() {
           )}
         </section>
 
-        <button className="reset-lesson" onClick={resetLesson} type="button">Start this lesson over</button>
-      </article>
+          <button className="reset-lesson" onClick={resetLesson} type="button">Start this lesson over</button>
+        </article>
+      </div>
 
       <section className="practice-surface" aria-label="Python editor and output">
         <div className="practice-title"><div><span className="status-light" /> <strong>main.py</strong></div><small>Saved in this browser</small></div>

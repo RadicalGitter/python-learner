@@ -20,7 +20,6 @@ export default function HelloPythonPage() {
         <Link className="leave-link" href="/course">Save and leave</Link>
       </header>
       <HelloWorkspace />
-      <footer className="lesson-footer"><Link href="/course">← Course map</Link><span>Next: Change a message · coming next</span></footer>
     </main>
   );
 }

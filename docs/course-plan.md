@@ -45,7 +45,9 @@ Concept lessons use a compact vertical task deck:
 - the numbered circles allow an intentional jump to any task;
 - viewing or attempting a later task does not mark skipped tasks complete;
 - the editor and output remain anchored together, separate from the changing
-  lesson instructions.
+  lesson instructions;
+- on desktop, the lesson is a fixed workspace with no document-level scroll;
+  unusually long instructions scroll inside the presentation card instead.
 
 This keeps normal progression strict while still giving an adult learner
 control over where they look.
