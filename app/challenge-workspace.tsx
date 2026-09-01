@@ -98,6 +98,10 @@ export default function ChallengeWorkspace() {
           <div><p className="eyebrow">Challenge 02 · Lists & loops</p><h1>Clean a command log</h1></div>
           <span className="difficulty">Gentle</span>
         </div>
+        <div className="practice-note">
+          <span>What you’re practising</span>
+          <p>A <strong>loop</strong> looks at each log line. A <strong>condition</strong> decides whether that line should increase the count.</p>
+        </div>
         <div className="brief">
           <p>A service has left a list of log messages behind. Write <code>count_errors</code> so it counts the lines containing <code>ERROR</code>.</p>
           <div className="example">

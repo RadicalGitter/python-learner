@@ -10,12 +10,14 @@ from Windows, Linux, or a static host.
 
 ## Current prototype
 
+- A welcoming introduction that explains the learning experience
+- A complete, expandable course roadmap from orientation to capstone
 - One editable Linux-flavoured Python challenge
 - Three automated checks running in the browser
 - An eight-second execution timeout
 - Automatic local saving of the learner's attempt
 - A three-step authored hint ladder
-- Responsive course, editor, and tutor layout
+- Responsive welcome, roadmap, editor, and tutor layouts
 
 The conversational tutor, course content format, accounts, and shared progress
 are planned but not yet wired.
@@ -40,8 +42,9 @@ Then open <http://localhost:3000>.
 5. Separate learning from infrastructure. Beginner code stays in the browser;
    advanced system exercises can graduate to isolated Linux containers later.
 
-See [docs/architecture.md](docs/architecture.md) for the reuse assessment and
-the proposed delivery phases.
+See [docs/course-plan.md](docs/course-plan.md) for the curriculum and learning
+model, and [docs/architecture.md](docs/architecture.md) for the reuse assessment
+and proposed delivery phases.
 
 ## License
 
