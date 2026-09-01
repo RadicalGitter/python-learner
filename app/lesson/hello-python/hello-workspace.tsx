@@ -278,28 +278,7 @@ export default function HelloWorkspace() {
                     <div><dt>Is it a text document?</dt><dd>No. It is a stream of text leaving the running program. This panel keeps the stream visible, but Python did not save a document.</dd></div>
                     <div><dt>Can <code>print()</code> put text anywhere?</dt><dd>Not by itself. It uses standard output unless we deliberately provide another text destination, such as an open file. A webpage or app interface uses other tools you’ll meet later.</dd></div>
                   </dl>
-
-                  <div className="concept-check">
-                    <h3>Check your understanding</h3>
-                    <p>When your first program ran, what best describes what happened?</p>
-                    <div className="concept-options" role="group" aria-label="Choose what happened to the printed text">
-                      <button aria-pressed={conceptChoice === 'file'} className={conceptChoice === 'file' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('file')} type="button"><span>A</span>Python created a new text file containing the sentence.</button>
-                      <button aria-pressed={conceptChoice === 'stdout'} className={conceptChoice === 'stdout' ? 'selected correct' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('stdout')} type="button"><span>B</span>Python sent text to standard output, which this lesson displayed.</button>
-                      <button aria-pressed={conceptChoice === 'webpage'} className={conceptChoice === 'webpage' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('webpage')} type="button"><span>C</span>Python placed the sentence directly into the webpage.</button>
-                    </div>
-                    {conceptChoice && (
-                      <p className={`concept-feedback ${conceptChoice === 'stdout' ? 'correct' : 'wrong'}`} role="status">
-                        {conceptChoice === 'stdout' ? 'Exactly. This Output panel is displaying the same kind of text stream a terminal normally would.' : 'Not quite. Nothing was saved or placed into the page directly. Follow the arrows above and try once more.'}
-                      </p>
-                    )}
-                  </div>
-
-                  {isComplete(3) && (
-                    <div className={lessonComplete ? 'lesson-finished' : 'lesson-finished incomplete'}>
-                      <span>{lessonComplete ? 'Lesson 1 complete' : 'Task 3 complete'}</span>
-                      <p>{lessonComplete ? 'You ran, changed, and explained your first Python instruction.' : 'You understand the explanation. The unfinished practical tasks remain available in the deck.'}</p>
-                    </div>
-                  )}
+                  <div className="response-cue"><span>Answer on the right</span><p>Use this explanation to choose the most accurate description.</p></div>
                 </div>
               </>
             )}
@@ -309,19 +288,46 @@ export default function HelloWorkspace() {
         </article>
       </div>
 
-      <section className="practice-surface" aria-label="Python editor and output">
-        <div className="practice-title"><div><span className="status-light" /> <strong>main.py</strong></div><small>Saved in this browser</small></div>
-        <textarea aria-label="Python code" onChange={(event) => setCode(event.target.value)} onKeyDown={onKeyDown} spellCheck={false} value={code} />
-        <div className="run-row">
-          <span>{activeStep === 1 ? 'Task 1: run the example' : activeStep === 2 ? 'Task 2: change the greeting' : 'The workspace stays open for experiments'}</span>
-          <button disabled={status === 'running'} onClick={runCode} type="button">{status === 'running' ? runnerReady ? 'Running…' : 'Starting Python…' : activeStep === 2 ? 'Run changed code' : 'Run code'} <kbd>Ctrl ↵</kbd></button>
-        </div>
-        <div className={`output-panel ${status}`} aria-live="polite">
-          <div><span>Output</span>{lastCompleted && <b>✓ Task {lastCompleted} complete</b>}</div>
-          <pre>{output}</pre>
-          <p>{feedback}</p>
-        </div>
-      </section>
+      {activeStep < 3 ? (
+        <section className="practice-surface" aria-label="Python editor and output">
+          <div className="practice-title"><div><span className="status-light" /> <strong>main.py</strong></div><small>Saved in this browser</small></div>
+          <textarea aria-label="Python code" onChange={(event) => setCode(event.target.value)} onKeyDown={onKeyDown} spellCheck={false} value={code} />
+          <div className="run-row">
+            <span>{activeStep === 1 ? 'Task 1: run the example' : 'Task 2: change the greeting'}</span>
+            <button disabled={status === 'running'} onClick={runCode} type="button">{status === 'running' ? runnerReady ? 'Running…' : 'Starting Python…' : activeStep === 2 ? 'Run changed code' : 'Run code'} <kbd>Ctrl ↵</kbd></button>
+          </div>
+          <div className={`output-panel ${status}`} aria-live="polite">
+            <div><span>Output</span>{lastCompleted && <b>✓ Task {lastCompleted} complete</b>}</div>
+            <pre>{output}</pre>
+            <p>{feedback}</p>
+          </div>
+        </section>
+      ) : (
+        <section className="concept-surface" aria-label="Task 3 answer choices">
+          <div className="concept-surface-title"><div><span className="status-light" /> <strong>Knowledge check</strong></div><small>Choose one answer</small></div>
+          <div className="concept-answer-body">
+            <p className="micro-label">Task 3 · Your turn</p>
+            <h2>Where did the printed text go?</h2>
+            <p>When your first program ran, what best describes what happened?</p>
+            <div className="concept-options" role="group" aria-label="Choose what happened to the printed text">
+              <button aria-pressed={conceptChoice === 'file'} className={conceptChoice === 'file' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('file')} type="button"><span>A</span>Python created a new text file containing the sentence.</button>
+              <button aria-pressed={conceptChoice === 'stdout'} className={conceptChoice === 'stdout' ? 'selected correct' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('stdout')} type="button"><span>B</span>Python sent text to standard output, which this lesson displayed.</button>
+              <button aria-pressed={conceptChoice === 'webpage'} className={conceptChoice === 'webpage' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('webpage')} type="button"><span>C</span>Python placed the sentence directly into the webpage.</button>
+            </div>
+            {conceptChoice && (
+              <p className={`concept-feedback ${conceptChoice === 'stdout' ? 'correct' : 'wrong'}`} role="status">
+                {conceptChoice === 'stdout' ? 'Exactly. This Output panel displayed the same kind of text stream a terminal normally would.' : 'Not quite. Nothing was saved or placed into the page directly. Follow the arrows on the left and try once more.'}
+              </p>
+            )}
+            {isComplete(3) && (
+              <div className={lessonComplete ? 'lesson-finished' : 'lesson-finished incomplete'}>
+                <span>{lessonComplete ? 'Lesson 1 complete' : 'Task 3 complete'}</span>
+                <p>{lessonComplete ? 'You ran, changed, and explained your first Python instruction.' : 'You understand the explanation. The unfinished practical tasks remain available in the deck.'}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

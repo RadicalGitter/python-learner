@@ -46,6 +46,8 @@ Concept lessons use a compact vertical task deck:
 - viewing or attempting a later task does not mark skipped tasks complete;
 - the editor and output remain anchored together, separate from the changing
   lesson instructions;
+- the right side always contains the way to respond: a Python workspace for
+  coding tasks and purpose-built controls for questions or other activities;
 - on desktop, the lesson is a fixed workspace with no document-level scroll;
   unusually long instructions scroll inside the presentation card instead.
 

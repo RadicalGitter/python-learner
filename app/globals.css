@@ -360,9 +360,9 @@ button { font: inherit; }
 .output-explainer dl > div { border-top: 1px solid var(--line); padding: 13px 0 3px; }
 .output-explainer dt { color: var(--ink); font-weight: 750; }
 .output-explainer dd { margin: 4px 0 8px; }
-.concept-check { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 15px; }
-.concept-check > h3 { margin-top: 0; }
-.concept-check > p { color: #59675e; }
+.response-cue { align-items: center; background: #edf4ed; border-radius: 8px; display: flex; gap: 13px; margin-top: 15px; padding: 11px 12px; }
+.response-cue > span { color: var(--green); flex: 0 0 auto; font-size: 7px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.response-cue > p { color: #5b685f; font-size: 8px; margin: 0; }
 .concept-options { display: grid; gap: 7px; margin-top: 11px; }
 .concept-options button { align-items: center; background: #f7f8f5; border: 1px solid #dce3dc; border-radius: 8px; color: #536158; cursor: pointer; display: grid; font-size: 9px; gap: 9px; grid-template-columns: 22px minmax(0, 1fr); line-height: 1.45; padding: 9px 10px; text-align: left; }
 .concept-options button > span { align-items: center; border: 1px solid #cbd5cc; border-radius: 50%; display: flex; font-family: var(--font-geist-mono), monospace; font-size: 7px; height: 20px; justify-content: center; width: 20px; }
@@ -381,7 +381,7 @@ button { font: inherit; }
 .lesson-finished p { margin: 5px 0 0; }
 .reset-lesson { background: transparent; border: 0; color: #77837b; cursor: pointer; font-size: 9px; margin: 2px 0 0 5px; padding: 4px 0; text-decoration: underline; text-decoration-color: #c8d0c8; text-underline-offset: 3px; }
 
-.practice-surface { align-self: start; background: var(--code); border: 1px solid #26372d; border-radius: 16px; box-shadow: 0 24px 65px rgba(28,45,34,.15); color: white; justify-self: end; max-width: 650px; overflow: hidden; width: 100%; }
+.practice-surface, .concept-surface { align-self: start; background: var(--code); border: 1px solid #26372d; border-radius: 16px; box-shadow: 0 24px 65px rgba(28,45,34,.15); color: white; justify-self: end; max-width: 650px; overflow: hidden; width: 100%; }
 .practice-title { align-items: center; border-bottom: 1px solid #293930; color: #9aa89f; display: flex; font-size: 9px; height: 43px; justify-content: space-between; padding: 0 16px; }
 .practice-title > div { align-items: center; display: flex; gap: 7px; }
 .practice-title strong { color: #eef4ef; font-family: var(--font-geist-mono), monospace; font-size: 10px; }
@@ -400,12 +400,19 @@ button { font: inherit; }
 .output-panel pre { color: #f0f5f1; font-family: var(--font-geist-mono), monospace; font-size: 11px; margin: 15px 0 0; overflow: auto; white-space: pre-wrap; }
 .output-panel > p { color: #9bac9f; font-size: 9px; line-height: 1.5; margin: 13px 0 0; }
 .output-panel.error pre { color: #efaaa3; }
+.concept-surface-title { align-items: center; border-bottom: 1px solid #293930; color: #9aa89f; display: flex; font-size: 9px; height: 43px; justify-content: space-between; padding: 0 16px; }
+.concept-surface { animation: draw-task-card .28s cubic-bezier(.2,.75,.25,1) both; transform-origin: left center; }
+.concept-surface-title > div { align-items: center; display: flex; gap: 7px; }
+.concept-surface-title strong { color: #eef4ef; font-size: 10px; }
+.concept-answer-body { background: #f8faf6; color: var(--ink); padding: clamp(24px, 3.5vw, 38px); }
+.concept-answer-body h2 { font-family: Georgia, serif; font-size: clamp(28px, 2.4vw, 36px); font-weight: 500; letter-spacing: -.035em; line-height: 1.08; margin: 0 0 10px; }
+.concept-answer-body > p:not(.micro-label):not(.concept-feedback) { color: #5d6b62; font-size: 11px; line-height: 1.55; margin: 0; }
 @media (max-width: 1050px) {
   .first-lesson-page { height: auto; min-height: 100vh; overflow: visible; }
   .first-lesson-grid { grid-template-columns: minmax(0, 1fr); height: auto; overflow: visible; row-gap: 34px; }
   .lesson-presentation-shell { min-height: 560px; }
   .lesson-conductor { overflow-y: visible; }
-  .practice-surface { grid-column: 1; grid-row: 2; justify-self: stretch; max-width: none; }
+  .practice-surface, .concept-surface { grid-column: 1; grid-row: 2; justify-self: stretch; max-width: none; }
 }
 @media (max-width: 620px) {
   .micro-lesson-header { padding: 0 16px; }
@@ -425,6 +432,6 @@ button { font: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .active-task-card { animation: none; }
+  .active-task-card, .concept-surface { animation: none; }
   .task-node { transition: none; }
 }
