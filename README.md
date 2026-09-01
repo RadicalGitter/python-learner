@@ -3,6 +3,11 @@
 A progressive, project-first Python course with browser-based code execution,
 automated checks, and a hint-first AI tutor.
 
+The curriculum is currently organised around the published learning outcomes
+for Umeå University’s 7.5-credit [Programming in Python (5DV177)](https://www.umu.se/en/student/syllabus/5dv177-id3656506/)
+course. The AI is the tutoring layer, not a replacement for learning the core
+Python material.
+
 The app is deliberately small at the start. It is not an LMS and it does not
 run student code on the host machine. Python executes in a Web Worker through
 [Pyodide](https://pyodide.org/), so the same first version works when served
@@ -11,7 +16,7 @@ from Windows, Linux, or a static host.
 ## Current prototype
 
 - A welcoming introduction that explains the learning experience
-- A complete, expandable course roadmap from orientation to capstone
+- A complete, expandable roadmap from orientation to a data-visualisation assignment
 - One editable Linux-flavoured Python challenge
 - Three automated checks running in the browser
 - An eight-second execution timeout

@@ -66,14 +66,14 @@ export default function Home() {
       <section className="course-glimpse" id="course-preview">
         <div>
           <p className="welcome-kicker"><span /> A path with a destination</p>
-          <h2>From your first function to a useful AI-powered app.</h2>
+          <h2>From your first instruction to a clear story told with data.</h2>
         </div>
         <div className="glimpse-summary">
-          <p>Six project chapters introduce only the ideas you need next. No puzzle gauntlet and no unexplained magic.</p>
+          <p>Six project chapters cover the published 5DV177 outcomes in a deliberate order. The tutor helps you think through them without taking over.</p>
           <ol>
-            <li><b>01</b><span>Automate a boring task</span></li>
-            <li><b>03</b><span>Build with real web data</span></li>
-            <li><b>05</b><span>Create a grounded AI assistant</span></li>
+            <li><b>01</b><span>Calculate with values and data types</span></li>
+            <li><b>04</b><span>Work safely with files and errors</span></li>
+            <li><b>06</b><span>Turn measurements into a clear chart</span></li>
           </ol>
           <Link className="text-action" href="/course">See every chapter</Link>
         </div>

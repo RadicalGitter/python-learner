@@ -4,20 +4,20 @@ import { useEffect, useRef, useState } from 'react';
 
 const starterCode = 'print("Hello, Python!")\n';
 const firstTarget = 'Hello, Python!';
-const secondTarget = 'Hello, Python Reboot!';
-const storageKey = 'python-reboot:hello-python:v3';
+const secondTarget = 'Ready to learn Python.';
+const storageKey = 'python-reboot:hello-python:v4';
 
 const tasks = [
-  { step: 1, short: 'Use print()', label: 'Try the idea' },
-  { step: 2, short: 'Change text', label: 'Change the output' },
-  { step: 3, short: 'Understand output', label: 'Understand it' },
+  { step: 1, short: 'Run print()', label: 'Run a worked example' },
+  { step: 2, short: 'Change the text', label: 'Make one change' },
+  { step: 3, short: 'Explain the result', label: 'Transfer the idea' },
 ] as const;
 
 type RunnerReply = { output: string; error: string | null };
 type LessonStep = 1 | 2 | 3;
 type CompletedStep = LessonStep;
 type CodeStep = 1 | 2;
-type ConceptChoice = 'file' | 'stdout' | 'webpage';
+type ConceptChoice = 'terminal' | 'source' | 'file';
 type RunStatus = 'ready' | 'running' | 'ran' | 'passed' | 'error';
 
 export default function HelloWorkspace() {
@@ -57,7 +57,7 @@ export default function HelloWorkspace() {
       if (savedCode !== null) setCode(savedCode);
       setActiveStep(savedStep);
       setCompletedSteps(savedCompleted);
-      if (savedCompleted.includes(3)) setConceptChoice('stdout');
+      if (savedCompleted.includes(3)) setConceptChoice('terminal');
       setHydrated(true);
     });
     return () => workerRef.current?.terminate();
@@ -163,7 +163,7 @@ export default function HelloWorkspace() {
 
   const answerConceptCheck = (choice: ConceptChoice) => {
     setConceptChoice(choice);
-    if (choice !== 'stdout') return;
+    if (choice !== 'terminal') return;
     setCompletedSteps((previous) => previous.includes(3) ? previous : [...previous, 3]);
   };
 
@@ -219,7 +219,7 @@ export default function HelloWorkspace() {
           <div className="lesson-conductor-intro">
             <p className="micro-label">Lesson 1 of 7 · About 5 minutes</p>
             <h1>Meet <code>print()</code></h1>
-            <p className="lesson-intro">The task marker moves down the deck while this presentation stays anchored. Correct output advances it automatically.</p>
+            <p className="lesson-intro">Start with a worked example, make one small change, then use the idea in a different setting.</p>
           </div>
           <p className="sr-only" aria-live="polite">Now viewing task {activeStep}: {tasks[activeStep - 1].label}.</p>
 
@@ -228,38 +228,37 @@ export default function HelloWorkspace() {
 
             {activeStep === 1 && (
               <>
-                <div className="task-heading"><span>Task 1 · Try the idea</span>{isComplete(1) && <b>Revisiting</b>}</div>
-                <h2>Make Python say hello</h2>
+                <div className="task-heading"><span>Task 1 · Worked example</span>{isComplete(1) && <b>Revisiting</b>}</div>
+                <h2>Connect one line to its result</h2>
                 <div className="task-body">
-                  <h3>What do we want to do?</h3>
-                  <p>Ask a program to display the words <strong>Hello, Python!</strong></p>
-                  <h3>How can we do it?</h3>
-                  <p>Python has a built-in function named <code>print()</code>—a ready-made instruction for sending something out of a program.</p>
+                  <p><strong>This first task is a demonstration, not a puzzle.</strong> The editor starts with a complete program so you can see exactly how one instruction causes one visible result.</p>
                   <pre><code>print(&quot;Hello, Python!&quot;)</code></pre>
                   <div className="syntax-anatomy" aria-label="Parts of the Python instruction">
-                    <div><code>print</code><span>The instruction Python already knows</span></div>
-                    <div><code>&quot;Hello, Python!&quot;</code><span>The text we want it to send</span></div>
+                    <div><code>print</code><span>A function Python already knows: display a value</span></div>
+                    <div><code>(&quot;Hello, Python!&quot;)</code><span>The text value we give to that function</span></div>
                   </div>
-                  <p className="task-action">The complete example is waiting in the editor. Run it once without changing anything.</p>
-                  <div className="task-target"><span>Target output</span><code>{firstTarget}</code></div>
+                  <p>The quotation marks tell Python where the text begins and ends. They describe the value, but they are not displayed with it.</p>
+                  <p className="task-action">Run the example without changing it. Watch for the same words in the Output panel; success moves you to Task 2.</p>
+                  <div className="task-target"><span>What you should see</span><code>{firstTarget}</code></div>
                 </div>
               </>
             )}
 
             {activeStep === 2 && (
               <>
-                <div className="task-heading"><span>Task 2 · Change one thing</span>{isComplete(2) && <b>Revisiting</b>}</div>
-                <h2>Give the greeting a new message</h2>
+                <div className="task-heading"><span>Task 2 · Your first change</span>{isComplete(2) && <b>Revisiting</b>}</div>
+                <h2>Make the program say something new</h2>
                 <div className="task-body">
-                  <p>You already know the instruction runs. Now change only the text between the quotation marks and observe how that changes the result.</p>
+                  <p>The worked example established what the line does. Now keep the function and its punctuation, but replace the <strong>text value</strong> between the quotation marks.</p>
                   <div className="change-boundary">
-                    <div><span>Keep</span><code>print(&quot; … &quot;)</code></div>
-                    <div><span>Replace</span><code>Hello, Python!</code></div>
+                    <div><span>Keep</span><code>print(&quot;…&quot;)</code></div>
+                    <div><span>Change</span><code>Hello, Python!</code></div>
                   </div>
-                  <div className="task-target"><span>New target output</span><code>{secondTarget}</code></div>
+                  <div className="task-target"><span>Make the output exactly</span><code>{secondTarget}</code></div>
+                  <p className="task-action">Before you run it, read your changed line once and check the capital letters, spaces, and final full stop.</p>
                   <details className="nudge-box">
                     <summary>Need a nudge?</summary>
-                    <p>Your line should begin with <code>print(&quot;</code> and end with <code>&quot;)</code>. Put the new greeting between those quotation marks.</p>
+                    <p>Your line should begin with <code>print(&quot;</code> and end with <code>&quot;)</code>. Put <code>{secondTarget}</code> between them.</p>
                   </details>
                 </div>
               </>
@@ -267,18 +266,18 @@ export default function HelloWorkspace() {
 
             {activeStep === 3 && (
               <>
-                <div className="task-heading"><span>Task 3 · Understand it</span><b>{lessonComplete ? 'Lesson complete' : isComplete(3) ? 'Understood' : 'Quick check'}</b></div>
-                <h2>What did <code>print()</code> actually do?</h2>
+                <div className="task-heading"><span>Task 3 · Transfer the idea</span><b>{lessonComplete ? 'Lesson complete' : isComplete(3) ? 'Understood' : 'Quick check'}</b></div>
+                <h2>Where does printed text actually go?</h2>
                 <div className="task-body output-explainer">
-                  <p><strong>Output</strong> is information a program sends outward. By default, <code>print()</code> sends text to a standard channel called <strong>standard output</strong>, or <code>stdout</code>.</p>
+                  <p><strong>Output</strong> is information a program sends outward while it runs. By default, <code>print()</code> sends text through a channel called <strong>standard output</strong>, often shortened to <code>stdout</code>.</p>
                   <div className="output-flow" aria-label="Python sends text through standard output to this lesson’s Output panel">
-                    <span>Python</span><i>→</i><span>standard output</span><i>→</i><span>Output panel</span>
+                    <span>Your program</span><i>→</i><span>standard output</span><i>→</i><span>This lesson’s panel</span>
                   </div>
                   <dl>
-                    <div><dt>Is it a text document?</dt><dd>No. It is a stream of text leaving the running program. This panel keeps the stream visible, but Python did not save a document.</dd></div>
-                    <div><dt>Can <code>print()</code> put text anywhere?</dt><dd>Not by itself. It uses standard output unless we deliberately provide another text destination, such as an open file. A webpage or app interface uses other tools you’ll meet later.</dd></div>
+                    <div><dt>Did Python create a document?</dt><dd>No. This panel kept the output visible, but the program did not save a file.</dd></div>
+                    <div><dt>Why call it “standard”?</dt><dd>Different environments can display the same channel differently. This lesson uses a panel; a locally run program normally uses its terminal.</dd></div>
                   </dl>
-                  <div className="response-cue"><span>Answer on the right</span><p>Use this explanation to choose the most accurate description.</p></div>
+                  <div className="response-cue"><span>Apply it on the right</span><p>Now transfer the idea from this browser lesson to a program run locally.</p></div>
                 </div>
               </>
             )}
@@ -293,7 +292,7 @@ export default function HelloWorkspace() {
           <div className="practice-title"><div><span className="status-light" /> <strong>main.py</strong></div><small>Saved in this browser</small></div>
           <textarea aria-label="Python code" onChange={(event) => setCode(event.target.value)} onKeyDown={onKeyDown} spellCheck={false} value={code} />
           <div className="run-row">
-            <span>{activeStep === 1 ? 'Task 1: run the example' : 'Task 2: change the greeting'}</span>
+            <span>{activeStep === 1 ? 'Task 1: run the worked example' : 'Task 2: change the text value'}</span>
             <button disabled={status === 'running'} onClick={runCode} type="button">{status === 'running' ? runnerReady ? 'Running…' : 'Starting Python…' : activeStep === 2 ? 'Run changed code' : 'Run code'} <kbd>Ctrl ↵</kbd></button>
           </div>
           <div className={`output-panel ${status}`} aria-live="polite">
@@ -307,16 +306,20 @@ export default function HelloWorkspace() {
           <div className="concept-surface-title"><div><span className="status-light" /> <strong>Knowledge check</strong></div><small>Choose one answer</small></div>
           <div className="concept-answer-body">
             <p className="micro-label">Task 3 · Your turn</p>
-            <h2>Where did the printed text go?</h2>
-            <p>When your first program ran, what best describes what happened?</p>
-            <div className="concept-options" role="group" aria-label="Choose what happened to the printed text">
-              <button aria-pressed={conceptChoice === 'file'} className={conceptChoice === 'file' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('file')} type="button"><span>A</span>Python created a new text file containing the sentence.</button>
-              <button aria-pressed={conceptChoice === 'stdout'} className={conceptChoice === 'stdout' ? 'selected correct' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('stdout')} type="button"><span>B</span>Python sent text to standard output, which this lesson displayed.</button>
-              <button aria-pressed={conceptChoice === 'webpage'} className={conceptChoice === 'webpage' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('webpage')} type="button"><span>C</span>Python placed the sentence directly into the webpage.</button>
+            <h2>Now move the program</h2>
+            <p>A friend runs <code>print(&quot;Hello!&quot;)</code> in a normal terminal instead of this lesson. What should they expect?</p>
+            <div className="concept-options" role="group" aria-label="Choose what happens when print runs in a terminal">
+              <button aria-pressed={conceptChoice === 'terminal'} className={conceptChoice === 'terminal' ? 'selected correct' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('terminal')} type="button"><span>A</span>The words appear in the terminal for that run; no file is created.</button>
+              <button aria-pressed={conceptChoice === 'source'} className={conceptChoice === 'source' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('source')} type="button"><span>B</span>The words replace the <code>print(...)</code> line in the source editor.</button>
+              <button aria-pressed={conceptChoice === 'file'} className={conceptChoice === 'file' ? 'selected wrong' : ''} disabled={isComplete(3)} onClick={() => answerConceptCheck('file')} type="button"><span>C</span>A new text file containing the words appears beside the program.</button>
             </div>
             {conceptChoice && (
-              <p className={`concept-feedback ${conceptChoice === 'stdout' ? 'correct' : 'wrong'}`} role="status">
-                {conceptChoice === 'stdout' ? 'Exactly. This Output panel displayed the same kind of text stream a terminal normally would.' : 'Not quite. Nothing was saved or placed into the page directly. Follow the arrows on the left and try once more.'}
+              <p className={`concept-feedback ${conceptChoice === 'terminal' ? 'correct' : 'wrong'}`} role="status">
+                {conceptChoice === 'terminal'
+                  ? 'Exactly. The terminal displays the program’s standard-output stream, just as this lesson’s Output panel did.'
+                  : conceptChoice === 'source'
+                    ? 'Not quite. Running print() displays a value; it does not rewrite the source code. Try once more.'
+                    : 'Not quite. Plain print() displays a value, but it does not save a file. Try once more.'}
               </p>
             )}
             {isComplete(3) && (

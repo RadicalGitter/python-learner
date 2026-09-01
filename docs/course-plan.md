@@ -1,5 +1,29 @@
 # Course plan
 
+## Curriculum basis
+
+The first complete path is designed as a companion to Umeå University course
+5DV177, Programming in Python (7.5 credits). The detailed scope below is based
+on the syllabus valid from 1 September 2025 through 30 August 2026. Umeå lists
+a newer syllabus for courses starting after 31 August 2026, so this mapping
+must be checked again when that version’s full outcomes are available.
+
+The published syllabus divides the course into two modules:
+
+- Programming techniques (6 credits): core programming constructs, algorithms,
+  files, error handling, and an introduction to classes and objects.
+- Application (1.5 credits): practical calculations and data visualisation.
+
+Official sources:
+
+- [5DV177 English syllabus](https://www.umu.se/en/education/syllabus/5dv177/?expandaccordion=true)
+- [5DV177 detailed syllabus and learning outcomes](https://www.umu.se/utbildning/kurs-och-utbildningsplan/5dv177/)
+
+The published textbook is Jonas Lindemann’s *Ingenjörens guide till Python*
+(2019). We will use it as a cross-reference when the learner has access to it,
+not reproduce its copyrighted exercises or depend on it for the app to make
+sense.
+
 ## Audience
 
 Python Reboot serves two people without forcing either into the wrong pace:
@@ -12,9 +36,12 @@ the underlying projects and learning outcomes stay the same.
 
 ## Course promise
 
-By the end, a learner should be able to plan, build, test, explain, and share a
-small Python application. They should also understand how to use an AI coding
-assistant without surrendering judgment or accepting unexplained code.
+By the end, a learner should be able to read and explain a small Python
+program, implement a given simple algorithm, structure code with functions,
+work with files and expected failures, recognise the purpose of classes and
+objects, and use libraries to calculate and visualise data. They should also
+know how to use an AI tutor without surrendering judgment or accepting
+unexplained code.
 
 ## Session rhythm
 
@@ -56,18 +83,34 @@ control over where they look.
 
 ## Progression
 
-| Stage | Project | Main learning outcome |
-| --- | --- | --- |
-| Orientation | Command-log helper | Read Python and change it without fear |
-| Useful scripts | Safe file-organising assistant | Break repeated work into functions |
-| Reliable programs | Personal expense tracker | Store data and test behaviour |
-| Connected Python | Morning API dashboard | Work with HTTP, JSON, and failure |
-| Web services | Study-group resource API | Build a persistent service others can use |
-| Modern AI | Evidence-citing study assistant | Treat a model as a testable component |
-| Capstone | Learner-chosen project | Scope, build, document, and ship independently |
+| Stage | Project | Main learning outcome | Syllabus link |
+| --- | --- | --- | --- |
+| Orientation | Tiny result reporter | Connect source, execution, output, sequence, and errors | Foundation for FSR 2 |
+| Values and data types | Study-time and unit calculator | Explain how common types are used and where they are limited | FSR 1 |
+| Algorithms and flow | Weekly study analyser | Trace simple sequential algorithms and implement them in Python | FSR 2, FSR 4 |
+| Functions and structure | Measurement-analysis toolkit | Divide a program into functions with clear inputs and results | FSR 5 |
+| Files and error handling | Validated file-based study log | Read, write, and create files; recognise and handle expected failures | FSR 3, FSR 6 |
+| Classes and objects | Extension to a library-loan model | Identify classes, objects, attributes, and method calls in given code | FSR 3 |
+| Applied Python | Reproducible data report | Use libraries for calculations and data visualisation | FSR 4, FSR 7 |
 
-The first four stages can begin in the browser. The service and AI stages move
-into a normal local repository with guided setup on either Windows or Linux.
+Core exercises can run in the browser. Later work also includes guided local
+setup on Windows and Linux so the learner practises the environment likely to
+be used in a computer lab.
+
+## Coverage guardrails
+
+The roadmap should not quietly drift into a generic developer bootcamp. The
+following are valuable but remain optional extensions until the seven published
+outcomes above have complete lesson and assessment coverage:
+
+- web APIs and asynchronous programming;
+- FastAPI, databases, Docker, and deployment;
+- model APIs, retrieval, tool use, and AI application engineering;
+- testing frameworks beyond the small checks needed to explain evidence.
+
+AI remains a modern feature throughout the core course as a contextual tutor,
+hint generator, misconception detector, and reflection partner. Learners still
+write, run, and explain the Python themselves.
 
 ## Guidance levels
 
@@ -96,6 +139,13 @@ Progress is based on evidence rather than points or streaks:
 
 Chapter projects end with a brief retrospective and a downloadable repository,
 not a synthetic score.
+
+The syllabus suggests two distinct kinds of evidence, and the app should
+prepare for both:
+
+- short, individual knowledge checks for concepts and code reading;
+- a practical assignment that combines Python, calculations, visualisation,
+  and a concise written or spoken explanation.
 
 ## Accessibility and tone
 

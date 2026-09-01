@@ -3,7 +3,7 @@ import { courseChapters } from '../../content/course';
 
 export const metadata = {
   title: 'Your learning path · Python Reboot',
-  description: 'A beginner-friendly path from Python fundamentals to useful scripts, web services, and responsible AI applications.',
+  description: 'A beginner-friendly Python path aligned with the published learning outcomes for Umeå University course 5DV177.',
   openGraph: { images: [] },
   twitter: { images: [] },
 };
@@ -24,6 +24,11 @@ export default function CoursePage() {
         <h1>You don’t need to know where you belong yet.</h1>
         <p>Begin at the start, or use the short orientation to rediscover what you remember. Nothing is locked, and nothing is wasted.</p>
 
+        <aside className="syllabus-note">
+          <div><strong>Built around 5DV177</strong><span>The core path follows the published scope of Umeå University’s Programming in Python course: data types, algorithms, functions, files, error handling, objects, calculations, and visualisation.</span></div>
+          <a href="https://www.umu.se/en/student/syllabus/5dv177-id3656506/" rel="noreferrer" target="_blank">Read the official syllabus <span aria-hidden="true">↗</span></a>
+        </aside>
+
         <div className="starting-choices">
           <article className="choice-card recommended">
             <span>Recommended</span>
@@ -43,7 +48,7 @@ export default function CoursePage() {
       <section className="course-path" id="path">
         <div className="path-heading">
           <div><p className="welcome-kicker"><span /> The complete course</p><h2>One useful project leads to the next.</h2></div>
-          <p>The browser is enough through Chapter 3. Later chapters gently introduce a local development setup on Windows or Linux.</p>
+          <p>Core exercises begin in the browser. Later project work also shows how to run the same Python locally on Windows or Linux.</p>
         </div>
 
         <ol className="chapter-list">
